@@ -1,0 +1,115 @@
+* {
+	padding: 0;
+	margin: 0;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+body {
+	font-family: 'Open Sans', sans-serif;
+	background: #000 url('fondo_usuario.jpg');
+	background-size: cover;
+	background-attachment: fixed;
+}
+header {
+	width: 100%;
+	padding: 50px 0;
+
+	display: flex;
+	flex-direction:row;
+	flex-wrap:wrap;
+	justify-content:space-between;
+	align-items:center;
+}
+
+header .menu a {
+	color: #fff;
+	text-decoration: none;
+	margin-right:40px;
+	font-size: 18px;
+}
+
+header .menu a:hover {text-decoration: underline;}
+.Contenido{
+	width: 90%;
+	display: flex;
+	overflow: hidden;
+	flex-direction: column;
+	margin-left: 5%;
+}
+.Contenedor{
+	width: 90%;
+	margin-left: 5%;
+	margin-right: 5%;
+	background: rgb(204,204,204,.8);
+}
+.Contenedor section{
+	padding: 2%;
+}
+.camara{
+width: 23%;
+      margin-bottom: 40px;
+}
+section {
+		text-decoration: none;
+		padding: 60px 0;
+		background: rgb(224,224,224,.8);
+}
+
+.Contenido h1{
+	font-size: 34px;
+    margin-bottom: 60px;
+    font-weight: 300;
+    color: #323068;
+    text-align: center;
+}
+
+.Opciones{
+display: flex;
+    flex-direction: rows;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+.Opciones a{	
+	align-items: center;
+	text-decoration: none;
+}
+.thumb{
+		width: 100%;
+        margin-bottom: 10px;
+        text-align: center;
+}
+.thumb img{
+		vertical-align: top;
+          width: 50%;
+          border-radius: 3px;
+}
+.thumb p{
+	font-weight: 700;
+          color: #3895ea;
+          margin-bottom: 10px;
+}
+.Datos{
+	display: flex;	
+	flex-direction: row;
+ 
+}
+.Panel{
+	width: 50%;
+	display: flex;
+	flex-direction: column;
+}
+.Panel1{	
+	width: 50%;	
+	display: flex;
+	flex-direction: column;
+	font-family: Arial;
+}
+.Panel1 h2{	
+	width: 50%;
+	align-self: right;
+	padding: 10px;
+	margin-bottom: 20px;
+	border-radius: 3px;border:1px solid #226fc1;font-family: Arial;
+}

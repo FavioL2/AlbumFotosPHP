@@ -1,0 +1,10 @@
+/* Paises */
+INSERT INTO `paises` (`IdPais`, `NomPais`) VALUES ('1', 'México');
+INSERT INTO `paises` (`IdPais`, `NomPais`) VALUES ('2', 'Francia');
+INSERT INTO `paises` (`IdPais`, `NomPais`) VALUES ('3', 'Colombia');
+
+/* Estilos */
+
+INSERT INTO `estilos` (`IdEstilo`, `Nombre`, `Descripcion`) VALUES ('1', 'Estilazo', 'Descripción del estilazo 1');
+INSERT INTO `estilos` (`IdEstilo`, `Nombre`, `Descripcion`) VALUES ('2', 'Arquitectura', 'Estas fotos son sobre atquitecturas heh');
+

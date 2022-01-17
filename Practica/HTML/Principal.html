@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Principal</title>	
+	<link rel="stylesheet" href="estilo.css">
+</head>
+<body>	
+	<header>
+		<h1 style="color:white;margin-left: 2%;opacity: .9;font-family: ">Esta wea</h1>
+		<nav>
+			<a href="">Iniciar Sesión</a>
+			<a href="">Registrar</a>
+		</nav>
+	</header>
+<?php
+				$conexion=mysqli_connect("localhost", "root","asdasdF17","pibd")or die("Problemas con la conexión");
+				$registros= mysqli_query($conexion, "SELECT fotos.Titulo, Paises.NomPais, fotos.Fecha, usuarios.Foto FROM fotos , usuarios , Paises WHERE (select Usuario from albumes where fotos.Album = albumes.IdAlbum )=usuarios.IdUsuario and Fotos.Pais = Paises.IdPais ORDER BY fotos.FRegistro DESC LIMIT 5");
+				while($reg=mysqli_fetch_array($registros)){
+					echo $reg['Titulo'];
+					?>	
+	<div class="Contenido">
+			<?php echo "asd";?>
+
+			<div class="caja1">		
+				<h1><?php echo $reg['Titulo']; ?></h1>
+				<img src="" alt="">
+				<p><?php echo $reg['Fecha']; ?></p>
+				<p><?php echo $reg['Pais']; ?></p>			
+			</div>
+			<? php } ?>
+			<div class="caja1 caja2">
+				<h1>Titulo</h1>
+				<img src="" alt="">
+				<p>Fecha</p>
+				<p>Pais</p>
+			</div>
+			<div class="caja1">
+				<h1></h1>
+				<img src="" alt="">
+				<p>Fecha</p>
+				<p>Pais</p>
+			</div>
+			
+	</div>
+	
+</body>
+</html>
