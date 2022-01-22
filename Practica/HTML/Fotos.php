@@ -21,11 +21,12 @@
 		<section>
 			<div class="Contenido">
 				<?php
-				include('../DB/Conexion.php');
-				session_start();				
-				$Consulta=mysqli_query($conexion,"SELECT * FROM Fotos INNER JOIN Paises ON Fotos.Pais = Paises.IdPais WHERE Album ='".$_GET['variable1']."';");
+				include('../DB/mod.php');
+				session_start();
+				$foto= new modelo_Fotos(); 
+				$Consulta=$foto->fotosPais();
 				$Foto=mysqli_fetch_array($Consulta);				
-				$Paises= mysqli_query($conexion,"SELECT * FROM Paises;");
+				$Paises= $foto->obtenerPaises();
 				echo "<h1>".$_GET['variable2']."</h1>";
 
 			 ?>	

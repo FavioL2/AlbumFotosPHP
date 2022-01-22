@@ -20,13 +20,16 @@
 		<div class="Contenedor">
 		<section>		
 				<?php
-				include('../DB/Conexion.php');
-				session_start();								
-					$Consulta=mysqli_query($conexion,"SELECT * FROM Usuarios WHERE Usuarios.IdUsuario ='".$_SESSION['Id']."'");
-					$Datos= mysqli_fetch_assoc($Consulta);					
-					$Nombres=array_keys($Datos); 
-					$Paises= mysqli_query($conexion,"SELECT * FROM Paises;");
-					$numPaises =mysqli_num_rows($Paises);
+				include('../DB/usuarios.php');
+				include_once '../DB/mod.php';
+				$bpais = new modelo_Fotos();
+				session_start();
+				$usuarios = new usuario();					
+				$Consulta=$usuarios->buscarUsuario();
+				$Datos= mysqli_fetch_assoc($Consulta);					
+				$Nombres=array_keys($Datos); 
+				$Paises= $bpais->obtenerPaises();
+				$numPaises =mysqli_num_rows($Paises);
 			 ?>				
 			<form class="formulario"method="POST" action="Update.php">
 				<?php
@@ -58,9 +61,7 @@
 		<input type="text" placeholder="Ciudad" name="Ciudad" <?php echo 'value = "'.$Datos['Ciudad'].'""'?> >
 		<label class="fechas">País:</label>
 		<div class="combo">
-			<?php
-				$Paises= mysqli_query($conexion,"SELECT * FROM Paises;");
-				$numPaises =mysqli_num_rows($Paises);
+			<?php				
 				echo "<select id='Pais' name='Pais' style='width: 100%;padding: 20px;margin-bottom: 20px;border-radius: 3px;border:1px solid #226fc1;font-family: Arial;'>";
 				for ($i=0; $i <$numPaises ; $i++) { 
 					$NomPais=mysqli_fetch_assoc($Paises);

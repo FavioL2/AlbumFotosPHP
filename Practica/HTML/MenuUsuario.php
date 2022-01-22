@@ -17,10 +17,14 @@
 				<a href="../DB/CerrarSesion.php">Cerrar Sesion</a>
 			</nav>
 		</header>
-		<?php 
-			include('../DB/Conexion.php');
-			session_start();		
-			$AlbumsUsuario=mysqli_query($conexion,"SELECT * FROM Albumes WHERE Albumes.Usuario ='".$_SESSION['Id']."';");
+		<?php 			
+			if(!isset($_SESSION)) 
+			{ 
+				session_start();
+			}
+			include_once '../DB/album.php';
+			$album = new album();						
+			$AlbumsUsuario=$album->obtenerAlbumes();
 			$NumAlbums=mysqli_num_rows($AlbumsUsuario);			
 		?>
 	<div class="Contenedor">

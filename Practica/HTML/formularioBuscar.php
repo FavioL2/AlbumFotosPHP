@@ -20,7 +20,11 @@
 	</header>
 	<form class="formulario"method="POST" action="">
 		<input type="text" placeholder="Titulo del la foto" name="Titulo">
-		<?php					
+		<?php
+		include_once '../DB/mod.php';
+			$bpais = new modelo_Fotos();
+			$Paises= $bpais->obtenerPaises();
+			$numPaises =mysqli_num_rows($Paises);					
 			echo "<select id='Pais' name='Pais' style='width: 100%;padding: 20px;margin-bottom: 20px;border-radius: 3px;border:1px solid #226fc1;font-family: Arial;'>";
 			for ($i=0; $i <$numPaises ; $i++) { 
 				$NomPais=mysqli_fetch_assoc($Paises);
@@ -32,8 +36,8 @@
 		<div class="Contenido" >
 			<?php
 			//En caso de haber pulsado el botón, se verificará si existe la foto con una cosnsulta
-		if (isset($_POST['Titulo'])&& isset($_POST['Botoncito'])) {
-			$Consulta=mysqli_query($conexion,"SELECT * FROM Fotos INNER JOIN Paises ON Paises.IdPais ='".$_POST['Pais']."' WHERE Fotos.Titulo ='".$_POST['Titulo']."' && Fotos.Pais ='".$_POST['Pais']."';");					
+		if (isset($_POST['Titulo'])&& isset($_POST['Botoncito'])) {			
+			$Consulta=$bpais->busquedaTituloPais();					
 			$Fotos=mysqli_fetch_array($Consulta);
 			if (mysqli_num_rows($Consulta)==1) {			
 				$Exist=1;

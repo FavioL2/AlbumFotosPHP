@@ -17,9 +17,9 @@
 		</nav>
 	</header>
 				<?php
-				include('../DB/Conexion.php');					
-					$registros= mysqli_query($conexion, "SELECT * FROM fotos INNER JOIN Paises ON Fotos.Pais = Paises.IdPais  ORDER BY FRegistro DESC LIMIT 5");
-					$reg = mysqli_fetch_array($registros);
+				include('../DB/mod.php');
+					$fotos = new modelo_fotos();			
+					$registros= $fotos->obtenerFotos();
 					$numero=mysqli_num_rows($registros);
 					$Count=0;
 					//Se verificarán si hay el número suficiente de fotos para mostrar, en caso contrario no se mostrarán las cajas. Se usa un contador bajo la idea de que puede haber más de 1 pero menos de 5.

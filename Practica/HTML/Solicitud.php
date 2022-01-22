@@ -21,10 +21,14 @@
 		<div class="Contenedor">
 		<section>			
 				<?php
-				include('../DB/Conexion.php');
-				session_start();				
-				$AlbumsUsuario=mysqli_query($conexion,"SELECT * FROM Albumes WHERE Albumes.Usuario ='".$_SESSION['Id']."';");
-				$NumAlbums=mysqli_num_rows($AlbumsUsuario);				
+				include('../DB/album.php');
+				session_start();
+				$album = new album();						
+				$AlbumsUsuario=$album->obtenerAlbumes();
+				$NumAlbums=mysqli_num_rows($AlbumsUsuario);
+				if($NumAlbums==0){
+					header('Location: Albumes.php');
+				}
 			 ?>
 			 <form class="formulario"method="POST" action="">
 				<input type="text" placeholder="Nombre" name="Nombre">

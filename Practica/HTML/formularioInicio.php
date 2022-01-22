@@ -7,15 +7,16 @@
 </head>
 <body>
 	<header>
-		<h1 style="color:white;margin-left: 2%;opacity: .9;font-family: ">Esta wea</h1>
+		<h1 style="color:white;margin-left: 2%;opacity: .9;">Esta wea</h1>
 		<nav>
 			<a href="./Principal.php">Inicio</a>
 			<a href="./formularioRegistro.php">Registrar Usuario</a>
 			<a href="./formularioBuscar.php">Buscar Foto</a>
 		</nav>
 	</header>
-	<form class="formulario" method="POST" action="../DB/IniciarSesion.php">
+	<form class="formulario" method="POST" action="">
 		<?php
+		
 			session_start();
 			if (array_key_exists("Error", $_SESSION)) {
 				if ($_SESSION["Error"] == 1) {
@@ -31,6 +32,13 @@
 		<input type="submit" value="Iniciar Sesion" name="login">
 		<a href="./formularioRegistro.php">Registrarse</a>
 	</form>
+	<?php
+		if (isset($_POST['login'])){
+			include_once '../DB/usuarios.php';
+			$usr= new usuario();
+			$usr->iniciar();
+		}		
+	?>
 	
 </body>
 </html>

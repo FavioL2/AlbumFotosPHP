@@ -18,16 +18,17 @@
 				<a href="Solicitud.php">Solicitar Album</a>
 				<a href="../DB/CerrarSesion.php">Cerrar Sesion</a>
 			</nav>
-		</header>
+		</header>		
 	<form class="formulario"method="POST" action="">
 		<input type="text" placeholder="Titulo del album" name="Titulo">
 		<textarea name="Descripcion" placeholder="Descripción del album"></textarea>
 		<input type="submit" value="Agregar" name="Botoncito">
 		<?php
 		if (isset($_POST['Botoncito'])) {
-			include('../DB/Conexion.php');
+			include('../DB/album.php');
 			session_start();
-			$Insertar=mysqli_query($conexion,"INSERT INTO Albumes(IdAlbum,Titulo,Descripcion,Usuario) VALUES('NULL','".$_POST['Titulo']."','".$_POST['Descripcion']."','".$_SESSION['Id']."'); ");
+			$album = new album();
+			$Insertar= $album->insertarAlbum();
 			if ($Insertar) {
 				header("Location: ../HTML/Albumes.php");
 			}

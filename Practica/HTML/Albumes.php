@@ -21,12 +21,11 @@
 		<section>
 			<div class="Contenido">
 				<?php
-				include('../DB/Conexion.php');
-				session_start();				
-				$Consulta=mysqli_query($conexion,"SELECT * FROM Albumes WHERE Usuario ='".$_SESSION['Id']."'");
-				
-				echo "<h1>".$_SESSION['usuario']."</h1>";
-				
+				include('../DB/album.php');
+				session_start();
+				$albumes = new album();
+				$Consulta=$albumes->obtenerAlbumes();				
+				echo "<h1>".$_SESSION['usuario']."</h1>";				
 				$Albums=mysqli_fetch_array($Consulta);
 			 ?>		
 			 <div class="Opciones">
@@ -46,17 +45,10 @@
 					 	$Albums=mysqli_fetch_array($Consulta);
 				 	}	
 				 }
-			 	?>
-			 	
-			 </div>	
-			
+			 	?>			 	
+			 </div>				
 			</div>
-			
-			 
 		</section>
-
 	</div>
-	
-	
 </body>
 </html>
